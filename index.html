@@ -1,618 +1,782 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f2eee6">
-<meta name="description" content="GUARBIV — independent apparel. WE ARE DIFFERENT.">
-<title>GUARBIV — WE ARE DIFFERENT</title>
-<style>
-:root{
-  --ink:#11110f;
-  --paper:#f2eee6;
-  --deep:#e5ded2;
-  --line:#cbc3b7;
-  --muted:#746e66;
-  --navy:#1f3042;
-  --olive:#71765c;
-  --blue:#556f86;
-  --white:#fffdf8;
-  --shadow:0 22px 60px rgba(17,17,15,.16);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
-body.locked{overflow:hidden}
-button,input,select{font:inherit}
-button{cursor:pointer}
-a{text-decoration:none;color:inherit}
-::selection{background:var(--ink);color:var(--paper)}
+  <meta charset="UTF-8">
 
-.top{
-  position:sticky;top:0;z-index:50;height:70px;padding:0 34px;
-  display:flex;align-items:center;justify-content:space-between;
-  border-bottom:1px solid var(--line);background:rgba(242,238,230,.96);
-  backdrop-filter:blur(12px)
-}
-.brand{
-  font-weight:900;font-size:25px;letter-spacing:-.085em;
-  transform:scaleX(.96);transform-origin:left
-}
-.nav{display:flex;gap:30px;font-size:10px;font-weight:800;letter-spacing:.15em}
-.actions{display:flex;gap:9px;align-items:center}
-.action{
-  border:1px solid var(--ink);background:transparent;padding:9px 11px;
-  min-height:38px;font-size:9px;font-weight:800;letter-spacing:.12em
-}
-.action:hover{background:var(--ink);color:var(--paper)}
-.mobile-menu{display:none}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-.hero{
-  min-height:calc(100svh - 70px);padding:28px 34px 34px;
-  display:flex;flex-direction:column;justify-content:space-between;
-  border-bottom:1px solid var(--line);
-  background:
-    radial-gradient(circle at 78% 22%,rgba(255,255,255,.75),transparent 23%),
-    linear-gradient(180deg,rgba(255,255,255,.18),transparent 36%),
-    var(--paper)
-}
-.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:9px;font-weight:700;letter-spacing:.18em}
-.hero-main{padding:8vh 0 5vh}
-.hero h1{
-  margin:0;font-size:clamp(78px,20vw,300px);line-height:.72;
-  letter-spacing:-.115em;font-weight:900;transform:scaleX(.94);transform-origin:left
-}
-.hero-copy{max-width:500px;margin:34px 0 0;font-size:18px;line-height:1.45}
-.hero-bottom{display:flex;justify-content:space-between;align-items:end;gap:24px}
-.cta{
-  display:inline-block;border:1px solid var(--ink);padding:15px 20px;
-  font-size:10px;font-weight:800;letter-spacing:.15em
-}
-.cta:hover{background:var(--ink);color:var(--paper)}
-.scroll{color:var(--muted);font-size:9px;letter-spacing:.16em}
+  <title>GUARBIV — Official Store</title>
 
-.section{padding:100px 34px;border-bottom:1px solid var(--line)}
-.kicker{margin-bottom:16px;color:var(--muted);font-size:9px;font-weight:800;letter-spacing:.19em}
-.title{margin:0 0 45px;font-size:clamp(42px,6.2vw,92px);line-height:.9;letter-spacing:-.078em}
+  <style>
 
-.drop-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:12px}
-.drop{
-  position:relative;min-height:560px;padding:20px;
-  display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;
-  color:#fff;background:var(--navy)
-}
-.drop:nth-child(2){background:var(--olive);color:var(--ink)}
-.drop-art{
-  position:absolute;inset:8% 13% 10%;border:1px solid currentColor;opacity:.9;
-}
-.drop-art:before{
-  content:"";position:absolute;left:50%;top:-9%;transform:translateX(-50%);
-  width:29%;height:11%;border:1px solid currentColor;border-bottom:0;
-  border-radius:50% 50% 0 0
-}
-.drop-art:after{
-  content:"GUARBIV";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scaleX(.9);
-  font-weight:900;font-size:clamp(36px,5vw,72px);letter-spacing:-.09em;white-space:nowrap
-}
-.drop-label{font-size:9px;font-weight:800;letter-spacing:.16em;z-index:2}
-.drop-number{position:absolute;right:20px;bottom:9px;font-size:95px;font-weight:900;line-height:1;opacity:.14}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.product{border:1px solid var(--line);background:rgba(255,255,255,.12)}
-.visual{
-  position:relative;height:430px;display:flex;align-items:center;justify-content:center;
-  overflow:hidden;background:#ded8ce
-}
-.product:nth-child(2) .visual{background:#d8ddd8}
-.product:nth-child(3) .visual{background:#ddd5c8}
-.garment{
-  position:relative;width:48%;height:57%;border:2px solid var(--ink);
-}
-.garment:before{
-  content:"";position:absolute;left:50%;top:-9%;transform:translateX(-50%);
-  width:29%;height:11%;border:2px solid var(--ink);border-bottom:0;border-radius:50% 50% 0 0
-}
-.garment:after{
-  content:"GUARBIV";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scaleX(.88);
-  font-weight:900;font-size:clamp(17px,2.4vw,32px);letter-spacing:-.09em;white-space:nowrap
-}
-.product:nth-child(3) .garment{height:30%;width:55%;border-radius:50% 50% 16% 16%}
-.product-info{
-  display:flex;justify-content:space-between;gap:12px;padding:15px 16px 17px;
-  font-size:9px;font-weight:800;letter-spacing:.10em
-}
-.status{color:var(--muted);font-weight:500}
+    :root {
+      --bg: #f3efe7;
+      --black: #111111;
+      --gray: #77736c;
+      --white: #ffffff;
+      --border: #d8d3ca;
+    }
 
-.position{padding:110px 34px;background:var(--ink);color:var(--paper)}
-.position-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:45px}
-.position .kicker{color:#a9a39b}
-.position-note{max-width:330px;color:#c9c3ba;font-size:15px;line-height:1.55}
-.position-statement{margin:0;font-size:clamp(40px,6.5vw,100px);line-height:.91;letter-spacing:-.085em}
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--black);
+    }
 
-.editorial{display:grid;grid-template-columns:1fr 1fr;min-height:600px;border-bottom:1px solid var(--line)}
-.editorial-visual{
-  display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,#aaa096,#ddd6cb)
-}
-.editorial-wordmark{font-size:clamp(58px,9vw,140px);font-weight:900;letter-spacing:-.1em;transform:scaleX(.91)}
-.editorial-copy{padding:72px 34px;display:flex;flex-direction:column;justify-content:space-between}
-.editorial-copy h3{margin:0;font-size:clamp(44px,5.4vw,78px);line-height:.92;letter-spacing:-.075em}
-.editorial-copy p{max-width:440px;margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+    /* HEADER */
 
-.newsletter{padding:72px 34px;display:flex;justify-content:space-between;gap:35px;align-items:flex-end;border-bottom:1px solid var(--line)}
-.newsletter h2{margin:0;font-size:clamp(40px,5vw,70px);line-height:.92;letter-spacing:-.075em}
-.form{display:flex;width:min(520px,100%);border-bottom:1px solid var(--ink)}
-.form input{flex:1;border:0;background:transparent;padding:14px 0;outline:0;font-size:13px}
-.form button{border:0;background:transparent;padding:14px 0 14px 14px;font-size:10px;font-weight:800;letter-spacing:.12em}
+    header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 5%;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(243,239,231,0.96);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
 
-.footer{
-  padding:26px 34px;background:var(--ink);color:var(--paper);
-  display:grid;grid-template-columns:1fr 1fr 1fr;font-size:9px;font-weight:700;letter-spacing:.13em
-}
-.footer div:nth-child(2){text-align:center}.footer div:last-child{text-align:right}
+    .logo {
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
 
-/* Drawers */
-.drawer{position:fixed;inset:0;z-index:100;display:none}
-.drawer.open{display:block}
-.overlay{position:absolute;inset:0;background:rgba(17,17,15,.48)}
-.panel{
-  position:absolute;top:0;height:100%;width:min(460px,92vw);
-  background:var(--paper);box-shadow:var(--shadow);padding:28px 30px;
-  overflow:auto
-}
-.panel.left{left:0;right:auto}
-.panel.right{right:0;left:auto}
-.close{
-  position:absolute;right:20px;top:16px;width:40px;height:40px;
-  border:1px solid var(--ink);background:transparent;font-size:24px;line-height:1
-}
-.panel-head{padding-top:58px;margin-bottom:28px}
-.panel-head h2{margin:0;font-size:clamp(46px,9vw,70px);line-height:.86;letter-spacing:-.08em}
-.panel-copy{color:var(--muted);line-height:1.55;font-size:14px;max-width:370px}
-.account-tabs{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--ink);margin:28px 0}
-.account-tabs button{border:0;border-right:1px solid var(--ink);background:transparent;padding:12px 8px;font-size:9px;font-weight:800;letter-spacing:.10em}
-.account-tabs button:last-child{border-right:0}
-.account-tabs button.active{background:var(--ink);color:var(--paper)}
-.account-view{display:none}
-.account-view.active{display:block}
-.field{display:grid;gap:7px;margin:13px 0}
-.field label{font-size:9px;color:var(--muted);font-weight:800;letter-spacing:.14em}
-.field input,.field select{
-  width:100%;border:1px solid var(--line);background:transparent;padding:13px;
-  outline:0;color:var(--ink)
-}
-.primary{
-  width:100%;margin-top:8px;border:1px solid var(--ink);background:var(--ink);
-  color:var(--paper);padding:14px;font-size:9px;font-weight:800;letter-spacing:.13em
-}
-.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
-.quick{border:1px solid var(--line);background:transparent;padding:15px;text-align:left;font-size:9px;font-weight:800;letter-spacing:.10em}
-.quick:hover{border-color:var(--ink)}
-.empty{padding:18px 0;color:var(--muted);font-size:14px;line-height:1.55}
+    nav {
+      display: flex;
+      gap: 30px;
+    }
 
-.search-row{display:flex;gap:12px;border-bottom:1px solid var(--ink);margin-top:30px}
-.search-row input{flex:1;border:0;background:transparent;padding:12px 0;outline:0;font-size:16px}
-.search-row button{border:0;background:transparent;font-size:9px;font-weight:800;letter-spacing:.12em}
-.search-results{margin-top:15px}
-.result{padding:15px 0;border-bottom:1px solid var(--line);font-size:11px;font-weight:800;letter-spacing:.08em}
+    nav a {
+      text-decoration: none;
+      color: var(--black);
+      font-size: 14px;
+      font-weight: 600;
+    }
 
-.lang-options{display:grid;gap:10px;margin-top:30px}
-.lang-option{border:1px solid var(--line);background:transparent;padding:15px;text-align:left;font-size:10px;font-weight:800;letter-spacing:.13em}
-.lang-option.active{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+    .cart-btn {
+      border: 1px solid var(--black);
+      background: transparent;
+      padding: 10px 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-.toast{
-  position:fixed;left:50%;bottom:22px;z-index:220;
-  transform:translate(-50%,120px);transition:transform .25s;
-  background:var(--ink);color:var(--paper);padding:13px 18px;
-  font-size:9px;font-weight:800;letter-spacing:.12em
-}
-.toast.show{transform:translate(-50%,0)}
+    /* HERO */
 
-.ai-launch{
-  position:fixed;right:20px;bottom:20px;z-index:80;
-  border:1px solid var(--ink);background:var(--paper);color:var(--ink);
-  padding:13px 15px;box-shadow:4px 4px 0 var(--ink);
-  font-size:9px;font-weight:800;letter-spacing:.12em
-}
-.ai-panel{
-  position:fixed;right:20px;bottom:70px;z-index:90;
-  width:min(390px,calc(100vw - 32px));height:min(520px,72svh);
-  display:none;flex-direction:column;background:var(--paper);
-  border:1px solid var(--ink);box-shadow:var(--shadow)
-}
-.ai-panel.open{display:flex}
-.ai-head{display:flex;justify-content:space-between;align-items:center;padding:14px 15px;border-bottom:1px solid var(--line);font-size:9px;font-weight:800;letter-spacing:.12em}
-.ai-head button{border:0;background:transparent;font-size:22px}
-.ai-chat{flex:1;padding:15px;overflow:auto;font-size:13px;line-height:1.45}
-.ai-msg{max-width:88%;margin-bottom:11px;padding:10px 12px;border:1px solid var(--line)}
-.ai-msg.user{margin-left:auto;background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.ai-input{display:flex;border-top:1px solid var(--line)}
-.ai-input input{flex:1;border:0;background:transparent;padding:14px;outline:0}
-.ai-input button{border:0;border-left:1px solid var(--line);background:transparent;padding:0 14px;font-size:9px;font-weight:800;letter-spacing:.10em}
+    .hero {
+      min-height: 85vh;
+      padding: 70px 5%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 1px solid var(--border);
+    }
 
-@media(max-width:760px){
-  .top{height:62px;padding:0 18px}.nav,.desktop-only{display:none}.mobile-menu{display:block}
-  .hero{min-height:calc(100svh - 62px);padding:22px 18px 24px}
-  .hero h1{font-size:25vw;letter-spacing:-.11em}
-  .hero-copy{font-size:16px;margin-top:27px;max-width:360px}
-  .hero-bottom{flex-direction:column;align-items:flex-start}
-  .section{padding:76px 18px}.title{margin-bottom:34px}
-  .drop-grid,.product-grid,.position-grid,.editorial{grid-template-columns:1fr}
-  .drop{min-height:410px}.visual{height:350px}
-  .position{padding:78px 18px}.position-statement{font-size:clamp(42px,11vw,74px);margin-top:15px}
-  .editorial-visual{min-height:390px}.editorial-copy{padding:56px 18px;min-height:480px}
-  .newsletter{padding:58px 18px;align-items:flex-start;flex-direction:column}.form{width:100%}
-  .footer{padding:25px 18px;grid-template-columns:1fr;gap:13px}.footer div,.footer div:nth-child(2),.footer div:last-child{text-align:left}
-  .panel{width:min(440px,100vw);padding:24px 20px}
-  .ai-launch{right:16px;bottom:16px}
-  .ai-panel{right:16px;bottom:66px;width:calc(100vw - 32px)}
-}
-</style>
+    .hero-tag {
+      font-size: 13px;
+      letter-spacing: 3px;
+      margin-bottom: 25px;
+      color: var(--gray);
+    }
+
+    .hero h1 {
+      font-size: clamp(60px, 13vw, 190px);
+      font-weight: 900;
+      letter-spacing: -10px;
+      line-height: 0.85;
+      max-width: 1200px;
+    }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 60px;
+      gap: 30px;
+    }
+
+    .hero-text {
+      max-width: 380px;
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .shop-now {
+      display: inline-block;
+      background: var(--black);
+      color: white;
+      padding: 18px 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .shop-now:hover {
+      transform: translateY(-3px);
+    }
+
+    /* MARQUEE */
+
+    .marquee {
+      background: var(--black);
+      color: white;
+      padding: 18px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee p {
+      font-size: 14px;
+      letter-spacing: 3px;
+      animation: move 18s linear infinite;
+    }
+
+    @keyframes move {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* COLLECTION */
+
+    .collection {
+      padding: 100px 5%;
+    }
+
+    .section-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-size: clamp(35px, 5vw, 70px);
+      font-weight: 900;
+      letter-spacing: -3px;
+    }
+
+    .section-number {
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    /* PRODUCTS */
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .product {
+      cursor: pointer;
+    }
+
+    .product-image {
+      height: 480px;
+      background: #d9d3c8;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .product-image::before {
+      content: "GUARBIV";
+      font-size: clamp(35px, 4vw, 70px);
+      font-weight: 900;
+      letter-spacing: -4px;
+      transform: rotate(-8deg);
+    }
+
+    .product-image.dark {
+      background: #1a1a1a;
+      color: white;
+    }
+
+    .product-image.gray {
+      background: #b9b5ae;
+    }
+
+    .product-info {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .product-category {
+      margin-top: 7px;
+      color: var(--gray);
+      font-size: 13px;
+    }
+
+    .add-btn {
+      margin-top: 15px;
+      width: 100%;
+      padding: 14px;
+      background: transparent;
+      border: 1px solid var(--black);
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .add-btn:hover {
+      background: var(--black);
+      color: white;
+    }
+
+    /* BRAND SECTION */
+
+    .brand-section {
+      padding: 120px 5%;
+      background: var(--black);
+      color: white;
+    }
+
+    .brand-section h2 {
+      font-size: clamp(50px, 10vw, 140px);
+      line-height: 0.9;
+      letter-spacing: -7px;
+      font-weight: 900;
+    }
+
+    .brand-text {
+      max-width: 550px;
+      margin-top: 50px;
+      font-size: 20px;
+      line-height: 1.6;
+      color: #cfcfcf;
+    }
+
+    /* NEWSLETTER */
+
+    .newsletter {
+      padding: 100px 5%;
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      font-size: clamp(40px, 7vw, 90px);
+      letter-spacing: -5px;
+      font-weight: 900;
+    }
+
+    .newsletter p {
+      margin-top: 20px;
+      color: var(--gray);
+    }
+
+    .email-form {
+      display: flex;
+      max-width: 500px;
+      margin: 40px auto 0;
+    }
+
+    .email-form input {
+      flex: 1;
+      padding: 18px;
+      border: 1px solid var(--black);
+      background: transparent;
+      outline: none;
+    }
+
+    .email-form button {
+      background: var(--black);
+      color: white;
+      border: none;
+      padding: 0 25px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 5%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    footer p {
+      color: var(--gray);
+      font-size: 13px;
+    }
+
+    /* CART */
+
+    .cart-panel {
+      position: fixed;
+      right: -420px;
+      top: 0;
+      width: 400px;
+      max-width: 100%;
+      height: 100vh;
+      background: var(--white);
+      z-index: 1000;
+      padding: 30px;
+      transition: 0.4s;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.15);
+    }
+
+    .cart-panel.active {
+      right: 0;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+    }
+
+    .close-cart {
+      border: none;
+      background: none;
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    #cart-items {
+      margin-top: 30px;
+    }
+
+    .cart-item {
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .cart-total {
+      margin-top: 30px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .checkout {
+      width: 100%;
+      margin-top: 20px;
+      padding: 18px;
+      background: var(--black);
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 800px) {
+
+      header {
+        padding: 20px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding: 70px 20px;
+      }
+
+      .hero h1 {
+        letter-spacing: -5px;
+      }
+
+      .hero-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .collection {
+        padding: 70px 20px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 420px;
+      }
+
+      .brand-section {
+        padding: 80px 20px;
+      }
+
+      .newsletter {
+        padding: 80px 20px;
+      }
+
+      .email-form {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .email-form button {
+        padding: 18px;
+      }
+
+    }
+
+  </style>
+
 </head>
+
 <body>
 
-<header class="top">
-  <a class="brand" href="#top" aria-label="GUARBIV home">GUARBIV</a>
-  <nav class="nav" aria-label="Primary">
-    <a href="#drop">DROP 001</a>
-    <a href="#objects">OBJECTS</a>
-    <a href="#position">POSITION</a>
+<header>
+
+  <div class="logo">GUARBIV</div>
+
+  <nav>
+    <a href="#shop">SHOP</a>
+    <a href="#about">ABOUT</a>
+    <a href="#contact">CONTACT</a>
   </nav>
-  <div class="actions">
-    <button class="action desktop-only" id="languageBtn">EN</button>
-    <button class="action desktop-only" id="searchBtn">SEARCH</button>
-    <button class="action desktop-only" id="accountBtn">ACCOUNT</button>
-    <button class="action" id="bagBtn">BAG (<span id="bagCount">0</span>)</button>
-    <button class="action mobile-menu" id="menuBtn">MENU</button>
-  </div>
+
+  <button class="cart-btn" onclick="toggleCart()">
+    CART (<span id="cart-count">0</span>)
+  </button>
+
 </header>
 
-<main id="top">
+
 <section class="hero">
-  <div class="meta"><span data-i18n="meta.apparel">INDEPENDENT APPAREL</span><span>EST. 2026 / DROP 001</span></div>
-  <div class="hero-main">
-    <h1>GUARBIV</h1>
-    <p class="hero-copy" id="heroCopy">Clothing for people who refuse to become a copy. Built with character, weight and its own visual language.</p>
+
+  <div class="hero-tag">
+    OFFICIAL STORE / EST. 2026
   </div>
+
+  <h1>
+    GUAR<br>
+    BIV
+  </h1>
+
   <div class="hero-bottom">
-    <a class="cta" href="#drop">EXPLORE DROP 001</a>
-    <span class="scroll">SCROLL TO ENTER ↓</span>
+
+    <p class="hero-text">
+      GUARBIV is built around strong design,
+      everyday objects and a clear identity.
+      No unnecessary noise.
+    </p>
+
+    <a href="#shop" class="shop-now">
+      SHOP COLLECTION →
+    </a>
+
   </div>
+
 </section>
 
-<section class="section" id="drop">
-  <div class="kicker">01 / FIRST DIRECTION</div>
-  <h2 class="title" id="dropTitle">ONE IDENTITY.<br>DIFFERENT FORMS.</h2>
-  <div class="drop-grid">
-    <article class="drop"><div class="drop-art"></div><span class="drop-label">DROP 001 / STRUCTURE</span><strong class="drop-number">01</strong></article>
-    <article class="drop"><div class="drop-art"></div><span class="drop-label">BUILT FROM THE SAME LANGUAGE</span><strong class="drop-number">G</strong></article>
+
+<div class="marquee">
+
+  <p>
+    GUARBIV — BUILT DIFFERENT — GUARBIV — BUILT DIFFERENT —
+    GUARBIV — BUILT DIFFERENT — GUARBIV — BUILT DIFFERENT —
+  </p>
+
+</div>
+
+
+<section class="collection" id="shop">
+
+  <div class="section-top">
+
+    <h2 class="section-title">
+      DROP 01
+    </h2>
+
+    <div class="section-number">
+      03 PRODUCTS
+    </div>
+
   </div>
+
+
+  <div class="products">
+
+
+    <div class="product">
+
+      <div class="product-image"></div>
+
+      <div class="product-info">
+        <span>GUARBIV CAP</span>
+        <span>$39</span>
+      </div>
+
+      <div class="product-category">
+        HEADWEAR / DROP 01
+      </div>
+
+      <button
+        class="add-btn"
+        onclick="addToCart('GUARBIV CAP', 39)">
+        ADD TO CART
+      </button>
+
+    </div>
+
+
+    <div class="product">
+
+      <div class="product-image dark"></div>
+
+      <div class="product-info">
+        <span>GUARBIV TEE</span>
+        <span>$49</span>
+      </div>
+
+      <div class="product-category">
+        APPAREL / DROP 01
+      </div>
+
+      <button
+        class="add-btn"
+        onclick="addToCart('GUARBIV TEE', 49)">
+        ADD TO CART
+      </button>
+
+    </div>
+
+
+    <div class="product">
+
+      <div class="product-image gray"></div>
+
+      <div class="product-info">
+        <span>GUARBIV BAG</span>
+        <span>$59</span>
+      </div>
+
+      <div class="product-category">
+        ACCESSORIES / DROP 01
+      </div>
+
+      <button
+        class="add-btn"
+        onclick="addToCart('GUARBIV BAG', 59)">
+        ADD TO CART
+      </button>
+
+    </div>
+
+
+  </div>
+
 </section>
 
-<section class="section" id="objects">
-  <div class="kicker">FIRST OBJECTS</div>
-  <h2 class="title">DESIGNED TO BE WORN.<br>NOT JUST PRINTED.</h2>
-  <div class="product-grid">
-    <article class="product">
-      <div class="visual"><div class="garment"></div></div>
-      <div class="product-info"><span>STRUCTURE TEE</span><span class="status">IN DEVELOPMENT</span></div>
-    </article>
-    <article class="product">
-      <div class="visual"><div class="garment"></div></div>
-      <div class="product-info"><span>LONG SLEEVE FORM</span><span class="status">IN DEVELOPMENT</span></div>
-    </article>
-    <article class="product">
-      <div class="visual"><div class="garment"></div></div>
-      <div class="product-info"><span>CAP / OBJECT 001</span><span class="status">IN DEVELOPMENT</span></div>
-    </article>
-  </div>
+
+<section class="brand-section" id="about">
+
+  <h2>
+    MADE TO<br>
+    STAND OUT.
+  </h2>
+
+  <p class="brand-text">
+
+    GUARBIV is not about putting a logo on
+    random products. The goal is to build a
+    recognizable identity, strong objects and
+    a brand people want to be part of.
+
+  </p>
+
 </section>
 
-<section class="position" id="position">
-  <div class="position-grid">
-    <div><div class="kicker">OUR POSITION</div><p class="position-note">GUARBIV is not trying to look futuristic or generic. The goal is a recognisable visual language with weight, character and a reason behind every detail.</p></div>
-    <p class="position-statement">WE ARE DIFFERENT.<br>NOT BECAUSE WE SAY IT.<br>BECAUSE WE BUILD OUR OWN FORM.</p>
-  </div>
-</section>
-
-<section class="editorial">
-  <div class="editorial-visual"><div class="editorial-wordmark">GUARBIV</div></div>
-  <div class="editorial-copy">
-    <div><div class="kicker">THE LANGUAGE</div><h3>QUIET.<br>STRONG.<br>RECOGNISABLE.</h3></div>
-    <p>Warm rice paper. Dense black typography. Close letter spacing. Clean construction. The identity should feel like a real clothing label with its own character — not a generic technology brand.</p>
-  </div>
-</section>
 
 <section class="newsletter" id="contact">
-  <div><div class="kicker">STAY CLOSE</div><h2>ENTER THE NEXT<br>GUARBIV DROP.</h2></div>
-  <form class="form" id="newsletterForm">
-    <input id="newsletterEmail" type="email" required autocomplete="email" placeholder="YOUR EMAIL ADDRESS">
-    <button type="submit">JOIN →</button>
-  </form>
-</section>
-</main>
 
-<footer class="footer">
-  <div>GUARBIV © 2026</div><div>WE ARE DIFFERENT</div><div>INSTAGRAM / CONTACT / JOURNAL</div>
+  <h2>
+    STAY CLOSE.
+  </h2>
+
+  <p>
+    New drops, products and GUARBIV updates.
+  </p>
+
+  <div class="email-form">
+
+    <input
+      type="email"
+      placeholder="YOUR EMAIL ADDRESS"
+    >
+
+    <button>
+      JOIN →
+    </button>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <div class="logo">
+    GUARBIV
+  </div>
+
+  <p>
+    © 2026 GUARBIV. ALL RIGHTS RESERVED.
+  </p>
+
 </footer>
 
-<!-- Account -->
-<div class="drawer" id="accountDrawer" aria-hidden="true">
-  <div class="overlay" data-close></div>
-  <aside class="panel left">
-    <button class="close" data-close aria-label="Close">×</button>
-    <div class="panel-head"><div class="kicker" data-i18n="account.kicker">ACCOUNT</div><h2 data-i18n="account.title">YOUR<br>GUARBIV.</h2></div>
-    <p class="panel-copy" id="accountStatus">Sign in to keep your details and follow orders.</p>
-    <div class="account-tabs">
-      <button class="active" data-tab="signin">SIGN IN</button>
-      <button data-tab="orders">ORDERS</button>
-      <button data-tab="profile">PROFILE</button>
-    </div>
-    <div class="account-view active" id="tab-signin">
-      <div class="field"><label>EMAIL</label><input id="accountEmail" type="email" autocomplete="email" placeholder="you@email.com"></div>
-      <div class="field"><label>PASSWORD</label><input id="accountPassword" type="password" autocomplete="current-password" placeholder="••••••••"></div>
-      <button class="primary" id="signinBtn">CONTINUE</button>
-    </div>
-    <div class="account-view" id="tab-orders"><div class="empty" id="ordersEmpty">No orders yet. Orders will appear here after checkout is connected.</div></div>
-    <div class="account-view" id="tab-profile">
-      <div class="field"><label>NAME</label><input id="profileName" type="text"></div>
-      <div class="field"><label>COUNTRY</label>
-        <select id="profileCountry"><option>United States</option><option>Canada</option><option>China</option><option>Russia</option><option>Tajikistan</option><option>Other</option></select>
-      </div>
-      <button class="primary" id="saveProfile">SAVE PROFILE</button>
-    </div>
-  </aside>
-</div>
 
-<!-- Search -->
-<div class="drawer" id="searchDrawer" aria-hidden="true">
-  <div class="overlay" data-close></div>
-  <aside class="panel right">
-    <button class="close" data-close aria-label="Close">×</button>
-    <div class="panel-head"><div class="kicker">SEARCH</div><h2>FIND<br>YOUR FORM.</h2></div>
-    <div class="search-row"><input id="siteSearch" type="search" placeholder="SEARCH GUARBIV"><button id="doSearch">SEARCH</button></div>
-    <div class="search-results" id="searchResults"></div>
-  </aside>
-</div>
+<!-- CART -->
 
-<!-- Language -->
-<div class="drawer" id="languageDrawer" aria-hidden="true">
-  <div class="overlay" data-close></div>
-  <aside class="panel right">
-    <button class="close" data-close aria-label="Close">×</button>
-    <div class="panel-head"><div class="kicker">LANGUAGE</div><h2>SELECT<br>LANGUAGE.</h2></div>
-    <div class="lang-options">
-      <button class="lang-option active" data-lang="EN">ENGLISH</button>
-      <button class="lang-option" data-lang="RU">РУССКИЙ</button>
-    </div>
-  </aside>
-</div>
+<div class="cart-panel" id="cart-panel">
 
-<!-- Bag -->
-<div class="drawer" id="bagDrawer" aria-hidden="true">
-  <div class="overlay" data-close></div>
-  <aside class="panel right">
-    <button class="close" data-close aria-label="Close">×</button>
-    <div class="panel-head"><div class="kicker">BAG</div><h2>YOUR<br>BAG.</h2></div>
-    <div class="empty" id="bagEmpty">Your bag is currently empty. Checkout is not connected yet.</div>
-  </aside>
-</div>
+  <div class="cart-header">
 
-<!-- Mobile menu -->
-<div class="drawer" id="menuDrawer" aria-hidden="true">
-  <div class="overlay" data-close></div>
-  <aside class="panel right">
-    <button class="close" data-close aria-label="Close">×</button>
-    <div class="panel-head"><div class="kicker">GUARBIV</div><h2>MENU.</h2></div>
-    <div class="quick-grid">
-      <button class="quick" data-scroll="#drop">DROP 001</button>
-      <button class="quick" data-scroll="#objects">OBJECTS</button>
-      <button class="quick" data-scroll="#position">POSITION</button>
-      <button class="quick" id="mobileAccount">ACCOUNT</button>
-      <button class="quick" id="mobileLanguage">LANGUAGE</button>
-      <button class="quick" id="mobileSearch">SEARCH</button>
-    </div>
-  </aside>
-</div>
+    <h2>YOUR CART</h2>
 
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <button
+      class="close-cart"
+      onclick="toggleCart()">
+      ×
+    </button>
 
-<!-- Local beta assistant: safe, no API key in front-end -->
-<button class="ai-launch" id="aiLaunch">GUARBIV ASSISTANT</button>
-<section class="ai-panel" id="aiPanel" aria-label="GUARBIV Assistant">
-  <div class="ai-head"><span>GUARBIV ASSISTANT / BETA</span><button id="aiClose" aria-label="Close">×</button></div>
-  <div class="ai-chat" id="aiChat">
-    <div class="ai-msg">Hi. I can explain DROP 001, the products, the brand language and the current site.</div>
   </div>
-  <div class="ai-input"><input id="aiInput" placeholder="Ask GUARBIV..."><button id="aiSend">SEND</button></div>
-</section>
+
+
+  <div id="cart-items">
+
+    <p style="color:#777">
+      Your cart is empty.
+    </p>
+
+  </div>
+
+
+  <div class="cart-total">
+    TOTAL: $<span id="cart-total">0</span>
+  </div>
+
+
+  <button class="checkout">
+    CHECKOUT
+  </button>
+
+</div>
+
 
 <script>
-(() => {
-  'use strict';
 
-  const $ = (id) => document.getElementById(id);
-  const drawers = ['accountDrawer','searchDrawer','languageDrawer','bagDrawer','menuDrawer'].map($).filter(Boolean);
-  const toastEl = $('toast');
-  let lang = localStorage.getItem('guarbiv_lang') || 'EN';
+  let cart = [];
 
-  const text = {
-    EN: {
-      hero: 'Clothing for people who refuse to become a copy. Built with character, weight and its own visual language.',
-      accountStatus: 'Sign in to keep your details and follow orders.',
-      orders: 'No orders yet. Orders will appear here after checkout is connected.',
-      bag: 'Your bag is currently empty. Checkout is not connected yet.',
-      emailNeeded: 'ENTER YOUR EMAIL'
-    },
-    RU: {
-      hero: 'Одежда для людей, которые не хотят становиться копией. Характер, форма и собственный визуальный язык.',
-      accountStatus: 'Войдите, чтобы сохранять данные и отслеживать заказы.',
-      orders: 'Заказов пока нет. Здесь они появятся после подключения оформления заказа.',
-      bag: 'Ваша корзина пока пуста. Оформление заказа ещё не подключено.',
-      emailNeeded: 'ВВЕДИТЕ EMAIL'
+
+  function toggleCart() {
+
+    document
+      .getElementById("cart-panel")
+      .classList
+      .toggle("active");
+
+  }
+
+
+  function addToCart(name, price) {
+
+    cart.push({
+      name: name,
+      price: price
+    });
+
+    updateCart();
+
+  }
+
+
+  function updateCart() {
+
+    const cartItems =
+      document.getElementById("cart-items");
+
+    const cartCount =
+      document.getElementById("cart-count");
+
+    const cartTotal =
+      document.getElementById("cart-total");
+
+
+    cartItems.innerHTML = "";
+
+
+    let total = 0;
+
+
+    cart.forEach((item, index) => {
+
+      total += item.price;
+
+
+      cartItems.innerHTML += `
+
+        <div class="cart-item">
+
+          <span>
+            ${item.name}
+          </span>
+
+          <span>
+            $${item.price}
+          </span>
+
+        </div>
+
+      `;
+
+    });
+
+
+    if (cart.length === 0) {
+
+      cartItems.innerHTML = `
+        <p style="color:#777">
+          Your cart is empty.
+        </p>
+      `;
+
     }
-  };
 
-  function showToast(message){
-    toastEl.textContent = message;
-    toastEl.classList.add('show');
-    window.clearTimeout(showToast.timer);
-    showToast.timer = window.setTimeout(() => toastEl.classList.remove('show'), 2200);
+
+    cartCount.textContent = cart.length;
+
+    cartTotal.textContent = total;
+
   }
 
-  function openDrawer(id){
-    drawers.forEach(d => d.classList.remove('open'));
-    const el = $(id);
-    if (!el) return;
-    el.classList.add('open');
-    el.setAttribute('aria-hidden','false');
-    document.body.classList.add('locked');
-  }
-
-  function closeDrawers(){
-    drawers.forEach(d => { d.classList.remove('open'); d.setAttribute('aria-hidden','true'); });
-    document.body.classList.remove('locked');
-  }
-
-  function applyLanguage(){
-    document.documentElement.lang = lang.toLowerCase();
-    $('heroCopy').textContent = text[lang].hero;
-    $('accountStatus').textContent = text[lang].accountStatus;
-    $('ordersEmpty').textContent = text[lang].orders;
-    $('bagEmpty').textContent = text[lang].bag;
-    $('languageBtn').textContent = lang;
-    document.querySelectorAll('.lang-option').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
-  }
-
-  $('accountBtn')?.addEventListener('click', () => openDrawer('accountDrawer'));
-  $('searchBtn')?.addEventListener('click', () => { openDrawer('searchDrawer'); $('siteSearch').focus(); });
-  $('languageBtn')?.addEventListener('click', () => openDrawer('languageDrawer'));
-  $('bagBtn')?.addEventListener('click', () => openDrawer('bagDrawer'));
-  $('menuBtn')?.addEventListener('click', () => openDrawer('menuDrawer'));
-
-  document.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeDrawers));
-
-  document.querySelectorAll('[data-tab]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.account-tabs button').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.account-view').forEach(v => v.classList.remove('active'));
-      btn.classList.add('active');
-      $('tab-' + btn.dataset.tab)?.classList.add('active');
-    });
-  });
-
-  document.querySelectorAll('.lang-option').forEach(btn => {
-    btn.addEventListener('click', () => {
-      lang = btn.dataset.lang;
-      localStorage.setItem('guarbiv_lang', lang);
-      applyLanguage();
-      showToast(lang === 'RU' ? 'ЯЗЫК: РУССКИЙ' : 'LANGUAGE: ENGLISH');
-      closeDrawers();
-    });
-  });
-
-  $('signinBtn')?.addEventListener('click', () => {
-    const email = $('accountEmail').value.trim();
-    if (!email) { showToast(text[lang].emailNeeded); return; }
-    localStorage.setItem('guarbiv_email', email);
-    showToast(lang === 'RU' ? 'ДАННЫЕ СОХРАНЕНЫ' : 'DETAILS SAVED');
-  });
-
-  $('saveProfile')?.addEventListener('click', () => {
-    localStorage.setItem('guarbiv_profile_name', $('profileName').value.trim());
-    localStorage.setItem('guarbiv_profile_country', $('profileCountry').value);
-    showToast(lang === 'RU' ? 'ПРОФИЛЬ СОХРАНЁН' : 'PROFILE SAVED');
-  });
-
-  $('profileName').value = localStorage.getItem('guarbiv_profile_name') || '';
-  $('profileCountry').value = localStorage.getItem('guarbiv_profile_country') || 'United States';
-
-  const products = ['STRUCTURE TEE','LONG SLEEVE FORM','CAP / OBJECT 001','DROP 001','GUARBIV'];
-
-  function renderSearch(){
-    const query = $('siteSearch').value.trim().toLowerCase();
-    const hits = query ? products.filter(p => p.toLowerCase().includes(query)) : products;
-    $('searchResults').innerHTML = hits.length
-      ? hits.map(p => '<div class="result">' + p + '</div>').join('')
-      : '<div class="result">NO MATCHES YET — DROP 001 IS IN DEVELOPMENT.</div>';
-  }
-  $('doSearch')?.addEventListener('click', renderSearch);
-  $('siteSearch')?.addEventListener('keydown', e => { if (e.key === 'Enter') renderSearch(); });
-  $('searchDrawer')?.addEventListener('transitionend', () => {});
-
-  document.querySelectorAll('[data-scroll]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      closeDrawers();
-      document.querySelector(btn.dataset.scroll)?.scrollIntoView({behavior:'smooth'});
-    });
-  });
-  $('mobileAccount')?.addEventListener('click', () => openDrawer('accountDrawer'));
-  $('mobileLanguage')?.addEventListener('click', () => openDrawer('languageDrawer'));
-  $('mobileSearch')?.addEventListener('click', () => { openDrawer('searchDrawer'); $('siteSearch').focus(); });
-
-  $('newsletterForm')?.addEventListener('submit', e => {
-    e.preventDefault();
-    const email = $('newsletterEmail').value.trim();
-    if (!email) return;
-    localStorage.setItem('guarbiv_newsletter_email', email);
-    $('newsletterEmail').value = '';
-    showToast(lang === 'RU' ? 'ВЫ В СПИСКЕ' : 'YOU ARE ON THE LIST');
-  });
-
-  // Assistant
-  const ai = $('aiPanel'), aiChat = $('aiChat'), aiInput = $('aiInput');
-  $('aiLaunch')?.addEventListener('click', () => {
-    ai.classList.add('open');
-    aiInput.focus();
-  });
-  $('aiClose')?.addEventListener('click', () => ai.classList.remove('open'));
-
-  const addAi = (message, user=false) => {
-    const node = document.createElement('div');
-    node.className = 'ai-msg' + (user ? ' user' : '');
-    node.textContent = message;
-    aiChat.appendChild(node);
-    aiChat.scrollTop = aiChat.scrollHeight;
-  };
-
-  function assistantReply(question){
-    const q = question.toLowerCase();
-    if (q.includes('cap') || q.includes('кеп')) return lang === 'RU'
-      ? 'CAP / OBJECT 001 сейчас в разработке. Когда будет готов реальный образец, сюда добавим фотографии, размеры и детали.'
-      : 'CAP / OBJECT 001 is in development. When the real sample is ready, we can add photos, sizing and details here.';
-    if (q.includes('drop') || q.includes('дроп')) return lang === 'RU'
-      ? 'DROP 001 — первое направление GUARBIV. Коллекция пока в разработке, поэтому товары отмечены IN DEVELOPMENT.'
-      : 'DROP 001 is the first GUARBIV direction. The collection is still in development, so the products are marked IN DEVELOPMENT.';
-    if (q.includes('shipping') || q.includes('достав')) return lang === 'RU'
-      ? 'Доставка пока не подключена. Для настоящего магазина позже добавим страны, тарифы, перевозчиков и checkout.'
-      : 'Shipping is not connected yet. A real store version will need regions, rates, carriers and checkout.';
-    if (q.includes('language') || q.includes('язык')) return lang === 'RU'
-      ? 'Сейчас доступны русский и английский. Выбранный язык сохраняется на этом устройстве.'
-      : 'Russian and English are available. The selected language is saved on this device.';
-    return lang === 'RU'
-      ? 'Я локальный beta-ассистент GUARBIV. Спроси про DROP 001, кепку, доставку, язык или текущее направление бренда.'
-      : 'I am the local GUARBIV beta assistant. Ask about DROP 001, the cap, shipping, language or the current brand direction.';
-  }
-
-  function sendAi(){
-    const q = aiInput.value.trim();
-    if (!q) return;
-    addAi(q,true);
-    aiInput.value = '';
-    window.setTimeout(() => addAi(assistantReply(q)), 220);
-  }
-  $('aiSend')?.addEventListener('click', sendAi);
-  aiInput?.addEventListener('keydown', e => { if (e.key === 'Enter') sendAi(); });
-
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      closeDrawers();
-      ai.classList.remove('open');
-    }
-  });
-
-  applyLanguage();
-})();
 </script>
+
+
 </body>
 </html>
